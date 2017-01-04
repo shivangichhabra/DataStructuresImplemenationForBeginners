@@ -1,7 +1,9 @@
+package BinaryTreeImpl;
+
 import java.util.Scanner;
 
 /**
- * Created by Shivangi on 12/25/2016.
+ * Created by FS047207 on 1/4/2017.
  */
 public class BinaryTree {
     BinaryTreeNode root;
@@ -168,3 +170,4 @@ public class BinaryTree {
         //}while(ch == 'Y' || ch == 'y');
     }
 }
+
