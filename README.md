@@ -5,5 +5,5 @@ This repo helps teaches how to implement some of the commonly used datastructure
 1. LinkedList
 2. Stack
 3. Queue
-4. BinaryTree
-and to be continued...
+4. Tree (with n nodes)
+5. BinaryTree
