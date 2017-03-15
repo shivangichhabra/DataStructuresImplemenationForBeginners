@@ -3,6 +3,15 @@
  */
 public class LinkedList {
 
+    class Node{
+        int value;
+        Node next;
+
+        public Node(int value){
+            this.value = value;
+        }
+    }
+
     Node head;
     Node tail;
 
@@ -124,6 +133,20 @@ public class LinkedList {
         }
     }
 
+    //Reverse a linked list
+    public void reverse(){
+        Node prev = null;
+        Node current = head;
+        Node next = null;
+        while(current != null){
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        head = prev;
+    }
+
     public void display(){
         if(head != null){
             Node current = head.next;
@@ -163,24 +186,19 @@ public class LinkedList {
         l.insertAtEnd(5);
         l.insert(9,2);
         l.insert(6,8);
-        l.insert(7,10);
+        l.insert(11, 3);
+        l.insert(12,3);
+        l.insert(13,8);
+        l.insertAtEnd(13);
         l.print();
         System.out.println(l.size());
         l.deleteFirst();
+        l.print();
         l.deleteLast();
         l.print();
         l.deletePos(2);
-        l.deleteValue(3);
         l.print();
-        System.out.println(l.size());
-    }
-
-    class Node{
-        int value;
-        Node next;
-
-        public Node(int value){
-            this.value = value;
-        }
+        l.reverse();
+        l.print();
     }
 }
