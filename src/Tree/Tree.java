@@ -35,7 +35,7 @@ public class Tree {
     public void display(Node node, String level){
         System.out.println(level + node.getData() );
         for(Node each: node.getChildren()){
-           display(each, level+level);
+            display(each, level+level);
         }
     }
 

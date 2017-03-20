@@ -61,6 +61,72 @@ public class BinarySearchTree {
     }
 
     /*
+    Delete a node with value k
+     */
+    public void delete(int k){
+        if(isEmpty())
+            System.out.println("Tree is already empty!");
+        else if(search(k) == false)
+            System.out.println("No such value in the given tree.");
+        else{
+            root = delete(root, k);
+            System.out.println(k + " is deleted.");
+        }
+    }
+
+    public BSTNode delete(BSTNode node, int data){
+        if(node == null)
+            return null;
+        else if (data < node.getData())
+            node.setLeft(delete(node.getLeft(), data));
+        else if (data > node.getData())
+            node.setRight(delete(node.getRight(), data));
+        else{
+            //case 1: no child
+            if(node.getLeft() == null && node.getRight() == null)
+                return null;
+            //case 2: one child
+            else if(node.getLeft() == null){
+                return node.getRight();
+            }
+            else if(node.getRight() == null){
+                return node.getLeft();
+            }
+            //case 3: two children
+            else{
+                //Method 1
+                node.setData(findRightMin(node.getRight()));
+                node.setRight(delete(node.getRight(), node.getData()));
+
+//                //Method 2
+//                node.setData(findLeftMax(node.getLeft()));
+//                node.setLeft(delete(node.getLeft(), node.getData()));
+            }
+        }
+        return node;
+    }
+
+    /*
+    Finds minimum in right subtree
+     */
+    int findRightMin(BSTNode node){
+        while(node.getLeft() != null) {
+            node = node.getLeft();
+        }
+        return node.getData();
+    }
+
+    /*
+    Finds maximum in left subtree
+     */
+    int findLeftMax(BSTNode node){
+        while(node.getRight() != null){
+            node = node.getRight();
+        }
+        return node.getData();
+    }
+
+    /*
     Count
      */
     public int count(){
@@ -141,7 +207,7 @@ public class BinarySearchTree {
 
         char ch;
         do{
-            System.out.println("\nEnter your choice: \n1. Insert \n2. Search \n3. Count \n4. Check Empty \n5. Height");
+            System.out.println("\nEnter your choice: \n1. Insert \n2. Search \n3. Delete  \n4. Count \n5. Check Empty \n6. Height");
             int choice = sc.nextInt();
             switch (choice) {
                 case 1:
@@ -158,14 +224,18 @@ public class BinarySearchTree {
                     break;
 
                 case 3:
+                    System.out.println("\nEnter element to delete");
+                    bst.delete(sc.nextInt());
+                    break;
+                case 4:
                     System.out.println("\nTotal number of nodes: " + bst.count());
                     break;
 
-                case 4:
+                case 5:
                     System.out.println("\nIs it empty? -> \"" + bst.isEmpty()+"\"");
                     break;
 
-                case 5:
+                case 6:
                     System.out.println("\nHeight of BST: " + bst.height());
                     break;
 
@@ -186,6 +256,6 @@ public class BinarySearchTree {
 
             System.out.println("Do you wish to continue (type y or n)");
             ch = sc.next().charAt(0);
-    }while(ch == 'Y' || ch == 'y');
-}
+        }while(ch == 'Y' || ch == 'y');
+    }
 }

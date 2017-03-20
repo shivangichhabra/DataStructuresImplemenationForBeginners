@@ -150,9 +150,9 @@ public class LinkedList {
     public void display(){
         if(head != null){
             Node current = head.next;
-            System.out.println(head.value);
+            System.out.print(head.value);
             while(current != null) {
-                System.out.println(current.value);
+                System.out.print("-->"+current.value);
                 current = current.next;
             }
         }else{
@@ -200,5 +200,6 @@ public class LinkedList {
         l.print();
         l.reverse();
         l.print();
+        l.display();
     }
 }
