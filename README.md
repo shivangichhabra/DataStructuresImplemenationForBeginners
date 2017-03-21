@@ -8,3 +8,5 @@ This repo helps teaches how to implement some of the commonly used datastructure
 4. Tree (with n nodes)
 5. Binary Tree
 6. Binary Search Tree
+7. Linear Search
+8. Binary Search
