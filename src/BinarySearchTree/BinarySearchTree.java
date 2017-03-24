@@ -85,7 +85,7 @@ public class BinarySearchTree {
             //case 1: no child
             if(node.getLeft() == null && node.getRight() == null)
                 return null;
-            //case 2: one child
+                //case 2: one child
             else if(node.getLeft() == null){
                 return node.getRight();
             }
@@ -163,7 +163,7 @@ public class BinarySearchTree {
     }
 
     /*
-    Traversal
+    Tree Traversal
      */
     public void preOrder(){
         preOrder(root);
@@ -201,6 +201,29 @@ public class BinarySearchTree {
         }
     }
 
+    /*
+    Level Order Traversal
+     */
+    public void printLevelOrder(){
+        int h = height();
+        for(int i = 0; i<= h ; i++ )
+            printGivenLevel(root, i);
+    }
+
+    public void printGivenLevel(BSTNode node, int level){
+        if(node == null)
+            return;
+        if(level == 0)
+            System.out.print(node.getData() + " ");
+        else {
+            printGivenLevel(node.getLeft(), level-1);
+            printGivenLevel(node.getRight(), level-1);
+        }
+    }
+
+    /*
+    main
+     */
     public static void main(String args[]){
         BinarySearchTree bst = new BinarySearchTree();
         Scanner sc = new Scanner(System.in);
@@ -254,7 +277,10 @@ public class BinarySearchTree {
             System.out.print("\nPost order: ");
             bst.postOrder();
 
-            System.out.println("Do you wish to continue (type y or n)");
+            System.out.print("\nLevel Order Traversal: ");
+            bst.printLevelOrder();
+
+            System.out.println("\nDo you wish to continue (type y or n)");
             ch = sc.next().charAt(0);
         }while(ch == 'Y' || ch == 'y');
     }

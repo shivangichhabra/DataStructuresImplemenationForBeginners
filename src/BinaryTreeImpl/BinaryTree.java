@@ -119,6 +119,28 @@ public class BinaryTree {
     }
 
     /*
+    Level Order Traversal
+     */
+    public void printLevelOrder(){
+        int h = count(root);
+        for(int i=1; i<=h; i++)
+            printGivenLevel(root, i);
+
+    }
+
+    public void printGivenLevel(BinaryTreeNode node, int level){
+        if(node == null)
+            return;
+        if(level == 1)
+            System.out.print(node.getData() + " ");
+        else if(level > 1) {
+            printGivenLevel(node.getLeft(), level-1);
+            printGivenLevel(node.getRight(), level-1);
+        }
+
+    }
+
+    /*
     Main method
      */
     public static void main(String args[]) {
@@ -163,6 +185,9 @@ public class BinaryTree {
 
             System.out.print("\nPost order: ");
             bt.postOrder();
+
+            System.out.println("\nLevel Order Traversal: \n");
+            bt.printLevelOrder();
 
             //System.out.println("Do you wish to continue (type y or n)");
             //ch = sc.next().charAt(0);
