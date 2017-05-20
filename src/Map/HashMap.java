@@ -82,6 +82,20 @@ public class HashMap<K, V> {
         return false;
     }
 
+    public boolean contains(K key){ //containskey
+        int hash = hash(key);
+
+        if(table[hash] != null){
+            Entry<K, V> temp = table[hash];
+            while(temp != null){
+                if(temp.getKey().equals(key))
+                    return true;
+                temp = temp.getNext();
+            }
+        }
+        return false;
+    }
+
     public void display(){
         System.out.println("------ START -------");
         for(int i=0; i<CAPACITY; i++){
