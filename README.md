@@ -11,5 +11,7 @@ This repo helps teaches how to implement some of the commonly used datastructure
 7. Linear Search
 8. Binary Search
 9. Queue Via stacks
-10. BFS traversal
-11. DFS traversal
+10. Map
+11. Set Using Map 
+12. BFS traversal
+13. DFS traversal
