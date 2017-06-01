@@ -15,3 +15,12 @@ This repo helps teaches how to implement some of the commonly used datastructure
 11. Set Using Map 
 12. BFS traversal
 13. DFS traversal
+14. Bubble Sort
+15. Insertion Sort
+16. Selection Sort
+17. Radix Sort
+18. Bucket Sort
+19. Merge Sort
+20. Quick Sort
+21. Heap Sort
+22. LRU Cache
