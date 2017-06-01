@@ -51,7 +51,6 @@ public class HashMap<K, V> {
                     }
                     return;
                 }
-
                 prev = current;
                 current = current.getNext();
             }
