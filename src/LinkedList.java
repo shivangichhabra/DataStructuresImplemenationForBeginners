@@ -147,6 +147,34 @@ public class LinkedList {
         head = prev;
     }
 
+    /*
+    finds minimum in list
+     */
+    public int findMin(){
+        Node temp = head;
+        int min = Integer.MAX_VALUE;
+        while(temp != null){
+            if(min > temp.value)
+                min = temp.value;
+            temp = temp.next;
+        }
+        return min;
+    }
+
+    /*
+    find max in list
+     */
+    public int findMax(){
+        Node temp = head;
+        int max = Integer.MIN_VALUE;
+        while(temp != null){
+            if(max < temp.value)
+                max = temp.value;
+            temp = temp.next;
+        }
+        return max;
+    }
+
     public void display(){
         if(head != null){
             Node current = head.next;
@@ -184,6 +212,7 @@ public class LinkedList {
         l.insertAtFront(1);
         l.insertAtFront(0);
         l.insertAtEnd(5);
+        l.insertAtEnd(0);
         l.insert(9,2);
         l.insert(6,8);
         l.insert(11, 3);
@@ -201,5 +230,7 @@ public class LinkedList {
         l.reverse();
         l.print();
         l.display();
+        System.out.println("\n"+l.findMin());
+        System.out.println(l.findMax());
     }
 }
