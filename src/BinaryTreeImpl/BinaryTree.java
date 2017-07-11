@@ -1,9 +1,9 @@
 package BinaryTreeImpl;
 
-import java.util.Scanner;
+import java.util.*;
 
 /**
- * Created by FS047207 on 1/4/2017.
+ * Created by Shivangi on 1/4/2017.
  */
 public class BinaryTree {
     BinaryTreeNode root;
@@ -137,7 +137,50 @@ public class BinaryTree {
             printGivenLevel(node.getLeft(), level-1);
             printGivenLevel(node.getRight(), level-1);
         }
+    }
 
+    /*
+    Level Order Traversal using BFS
+     */
+    public List<List<BinaryTreeNode>> getLevelData(BinaryTreeNode node){
+        List<List<BinaryTreeNode>> levels = new ArrayList<List<BinaryTreeNode>>();
+        if(node == null)
+            return levels;
+
+        Queue<BinaryTreeNode> queue = new LinkedList<BinaryTreeNode>();
+        queue.add(node);
+        while(!queue.isEmpty()){
+            List<BinaryTreeNode> level = new ArrayList<BinaryTreeNode>(queue.size());
+            levels.add(level);
+
+            for(BinaryTreeNode n : new ArrayList<BinaryTreeNode>(queue)) {
+                level.add(n);
+                if (n.left != null)
+                    queue.add(n.left);
+
+                if (n.right != null)
+                    queue.add(n.right);
+
+                queue.poll();
+            }
+        }
+        return levels;
+    }
+
+    public void printLevelWise(){
+        List<List<BinaryTreeNode>> levels = getLevelData(root);
+
+        for(List<BinaryTreeNode> level : levels){
+            int count = level.size();
+            for(BinaryTreeNode n : level) {
+                System.out.print(n.data);
+                if (count > 1) {
+                    System.out.print(",");
+                    count--;
+                }
+            }
+            System.out.print(" ! ");
+        }
     }
 
     /*
@@ -186,8 +229,11 @@ public class BinaryTree {
             System.out.print("\nPost order: ");
             bt.postOrder();
 
-            System.out.println("\nLevel Order Traversal: \n");
+            System.out.println("\nLevel Order Traversal: ");
             bt.printLevelOrder();
+
+            System.out.println("\nBFS Level Order Traversal: ");
+            bt.printLevelWise();
 
             //System.out.println("Do you wish to continue (type y or n)");
             //ch = sc.next().charAt(0);

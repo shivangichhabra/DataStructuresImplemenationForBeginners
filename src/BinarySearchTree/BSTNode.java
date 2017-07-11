@@ -4,9 +4,9 @@ package BinarySearchTree;
  * Created by Shivangi on 1/7/2017.
  */
 public class BSTNode {
-    private int data;
-    private BSTNode left;
-    private BSTNode right;
+    int data;
+    BSTNode left;
+    BSTNode right;
 
     public BSTNode(){
         data = 0;

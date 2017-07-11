@@ -1,5 +1,7 @@
 package BinarySearchTree;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
+
 import java.util.Scanner;
 
 /**
@@ -206,18 +208,24 @@ public class BinarySearchTree {
      */
     public void printLevelOrder(){
         int h = height();
-        for(int i = 0; i<= h ; i++ )
+        for(int i = 0; i<= h ; i++ ) {
             printGivenLevel(root, i);
+            System.out.print("!");
+        }
     }
 
     public void printGivenLevel(BSTNode node, int level){
         if(node == null)
             return;
         if(level == 0)
-            System.out.print(node.getData() + " ");
+            System.out.print(node.getData());
         else {
             printGivenLevel(node.getLeft(), level-1);
-            printGivenLevel(node.getRight(), level-1);
+
+            if (node.left != null && node.right != null)
+            System.out.print(",");
+
+            printGivenLevel(node.getRight(), level - 1);
         }
     }
 

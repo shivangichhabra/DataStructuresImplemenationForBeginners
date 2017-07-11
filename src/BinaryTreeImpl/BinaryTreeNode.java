@@ -1,7 +1,7 @@
 package BinaryTreeImpl;
 
 /**
- * Created by FS047207 on 1/4/2017.
+ * Created by Shivangi on 1/4/2017.
  */
 public class BinaryTreeNode {
 
