@@ -8,6 +8,8 @@ This repo helps teaches how to implement some of the commonly used datastructure
 4. Tree (with n nodes)
 5. Binary Tree
 6. Binary Search Tree
+      Level Order Traversal to print tree as 1 ! 2,3 ! 4,5 !
+      InOrder, PreOrder and PostOrder Traversal
 7. Linear Search
 8. Binary Search
 9. Queue Via stacks
