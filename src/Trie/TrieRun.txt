@@ -1,0 +1,186 @@
+................ Tires ................
+
+ Options below:
+1. insert
+2. delete
+3. search
+4. startsWith
+1
+Enter string to insert
+trie
+Press y to continue !
+y
+
+ Options below:
+1. insert
+2. delete
+3. search
+4. startsWith
+1
+Enter string to insert
+tree
+Press y to continue !
+y
+
+ Options below:
+1. insert
+2. delete
+3. search
+4. startsWith
+1
+Enter string to insert
+branch
+Press y to continue !
+y
+
+ Options below:
+1. insert
+2. delete
+3. search
+4. startsWith
+1
+Enter string to insert
+beach
+Press y to continue !
+y
+
+ Options below:
+1. insert
+2. delete
+3. search
+4. startsWith
+4
+Enter prefix to look for
+bran
+true
+Press y to continue !
+y
+
+ Options below:
+1. insert
+2. delete
+3. search
+4. startsWith
+4
+Enter prefix to look for
+tr
+true
+Press y to continue !
+y
+
+ Options below:
+1. insert
+2. delete
+3. search
+4. startsWith
+3
+Enter string to search
+bean
+false
+Press y to continue !
+y
+
+ Options below:
+1. insert
+2. delete
+3. search
+4. startsWith
+3
+Enter string to search
+beach
+true
+Press y to continue !
+y
+
+ Options below:
+1. insert
+2. delete
+3. search
+4. startsWith
+3
+Enter string to search
+trie
+true
+Press y to continue !
+y
+
+ Options below:
+1. insert
+2. delete
+3. search
+4. startsWith
+2
+Enter string to delete
+trie
+Press y to continue !
+y
+
+ Options below:
+1. insert
+2. delete
+3. search
+4. startsWith
+3
+Enter string to search
+trie
+false
+Press y to continue !
+y
+
+ Options below:
+1. insert
+2. delete
+3. search
+4. startsWith
+3
+Enter string to search
+tree
+true
+Press y to continue !
+y
+
+ Options below:
+1. insert
+2. delete
+3. search
+4. startsWith
+2
+Enter string to delete
+bean
+Does not exist in Trie
+Press y to continue !
+y
+
+ Options below:
+1. insert
+2. delete
+3. search
+4. startsWith
+2
+Enter string to delete
+beach
+Press y to continue !
+y
+
+ Options below:
+1. insert
+2. delete
+3. search
+4. startsWith
+3
+Enter string to search
+beach
+false
+Press y to continue !
+y
+
+ Options below:
+1. insert
+2. delete
+3. search
+4. startsWith
+3
+Enter string to search
+tree
+true
+Press y to continue !
