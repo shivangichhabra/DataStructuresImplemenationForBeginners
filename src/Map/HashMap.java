@@ -33,28 +33,18 @@ public class HashMap<K, V> {
             return;
 
         int hash = hash(key);
-
         Entry<K, V> newEntry = new Entry<K, V>(key, value);
 
         if(table[hash] == null){
             table[hash] = newEntry;
         } else {
-            Entry<K, V> prev = null;
-            Entry<K, V> current = newEntry;
-            while(current != null){
-                if(current.getKey().equals(key)) {
-                    newEntry.setNext(current.getNext());
-                    if (prev == null) {
-                        table[hash] = newEntry;
-                    } else {
-                        prev.setNext(newEntry);
-                    }
+            while(table[hash] != null){
+                Entry<K, V> temp = table[hash];
+                if(temp.getKey().equals(key)) {
+                    temp.setNext(newEntry);
                     return;
                 }
-                prev = current;
-                current = current.getNext();
             }
-            prev.setNext(newEntry);
         }
 
     }
@@ -64,7 +54,6 @@ public class HashMap<K, V> {
         if(table[hash] != null){
             Entry<K, V> prev = null;
             Entry<K, V> current = table[hash];
-
             while(current != null){
                 if(current.getKey().equals(key)){
                     if(prev == null){
@@ -74,8 +63,6 @@ public class HashMap<K, V> {
                     }
                     return true;
                 }
-                prev = current;
-                current = current.getNext();
             }
         }
         return false;
@@ -118,17 +105,18 @@ public class HashMap<K, V> {
         map.put(2,30);
         map.put(4,40);
         map.put(5,50);
-
         map.display();
 
         System.out.println(map.get(1));
         System.out.println(map.get(65));
-
         map.display();
 
         System.out.println(map.remove(2));
         System.out.println(map.remove(43));
-
         map.display();
+
+        map.put(6,90);
+        map.display();
+
     }
 }
