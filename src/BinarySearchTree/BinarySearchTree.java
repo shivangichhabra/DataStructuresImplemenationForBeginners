@@ -1,7 +1,5 @@
 package BinarySearchTree;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
-
 import java.util.Scanner;
 
 /**
@@ -53,7 +51,7 @@ public class BinarySearchTree {
             if (node.getData() == data){
                 return true;
             } else{
-                if(data <= node.getData()){
+                if(data < node.getData()){
                     return search(node.getLeft(), data);
                 } else {
                     return search(node.getRight(), data);
