@@ -8,11 +8,11 @@ public class BubbleSort {
         int a[] = {10, 50, 30, 20, 70, 0};
 
         for(int i=0; i<a.length; i++){
-            for(int j=1; j<(a.length - i); j++){
-                if(a[j-1] > a[j]){ //ascending > descending <
-                    int temp = a[j-1];
-                    a[j-1] = a[j];
-                    a[j] = temp;
+            for(int j=0; j<a.length - i-1; j++){
+                if(a[j] > a[j+1]){ //ascending > descending <
+                    int temp = a[j];
+                    a[j] = a[j+1];
+                    a[j+1] = temp;
                 }
             }
         }
