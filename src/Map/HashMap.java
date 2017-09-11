@@ -38,8 +38,8 @@ public class HashMap<K, V> {
         if(table[hash] == null){
             table[hash] = newEntry;
         } else {
-            while(table[hash] != null){
-                Entry<K, V> temp = table[hash];
+            Entry<K, V> temp = table[hash];
+            while(temp != null){
                 if(temp.getKey().equals(key)) {
                     temp.setNext(newEntry);
                     return;

@@ -72,7 +72,6 @@ public class Trie {
                 children = t.children;
                 t.isLeaf = false;
             }
-
         }
     }
 
