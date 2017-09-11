@@ -63,6 +63,8 @@ public class HashMap<K, V> {
                     }
                     return true;
                 }
+                prev = current;
+                current = current.getNext();
             }
         }
         return false;
