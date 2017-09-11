@@ -22,8 +22,7 @@ public class Tree {
     }
 
     public Node addChildNode(Node parent, int data){
-        Node child = new Node(parent.getData());
-        child.setData(data);
+        Node child = new Node(data);
         parent.getChildren().add(child);
         return child;
     }
