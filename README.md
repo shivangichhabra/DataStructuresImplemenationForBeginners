@@ -27,3 +27,4 @@ This repo helps teaches how to implement some of the commonly used datastructure
 21. Heap Sort
 22. LRU Cache
 23. Trie
+24. Priority Queue
