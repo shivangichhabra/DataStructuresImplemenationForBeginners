@@ -67,6 +67,7 @@ public class QueueUsingStacks {
         qs.dequeue();
         System.out.println(qs.peek());
         qs.dequeue();
+        System.out.println(qs.peek());
         qs.dequeue();
         System.out.println(qs.peek());
         System.out.println(qs.empty());
