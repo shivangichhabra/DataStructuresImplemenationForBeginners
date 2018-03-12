@@ -9,7 +9,7 @@ public class QueueUsingStacks {
     Stack<Integer> main = new Stack<Integer>();
     Stack<Integer> temp = new Stack<Integer>();
 
-    public void push(int data){
+    public void enqueue(int data){
         main.push(data);
         /*
         if(!temp.isEmpty()) {
@@ -32,7 +32,7 @@ public class QueueUsingStacks {
         }
     }
 
-    public void pop(){
+    public void dequeue(){
         /*
         main.pop();
         */
@@ -58,19 +58,19 @@ public class QueueUsingStacks {
     public static void main(String args[]){
         QueueUsingStacks qs = new QueueUsingStacks();
         qs.empty();
-        qs.push(1);
+        qs.enqueue(1);
         System.out.println(qs.peek());
-        qs.push(2);
-        qs.push(3);
-        qs.push(4);
+        qs.enqueue(2);
+        qs.enqueue(3);
+        qs.enqueue(4);
         System.out.println(qs.peek());
-        qs.pop();
+        qs.dequeue();
         System.out.println(qs.peek());
-        qs.pop();
-        qs.pop();
+        qs.dequeue();
+        qs.dequeue();
         System.out.println(qs.peek());
         System.out.println(qs.empty());
-        qs.pop();
+        qs.dequeue();
         System.out.println(qs.peek());
         System.out.println(qs.empty());
     }
