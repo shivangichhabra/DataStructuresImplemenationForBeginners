@@ -53,7 +53,6 @@ public class LinkedList {
         }else{
             current.next = head;
             head = current;
-            current.next = head.next;
         }
     }
 
