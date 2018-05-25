@@ -15,70 +15,61 @@ public class Trie {
     }
 
     public void insert(String word){
-        HashMap<Character, TrieNode> children = root.children;
-
+        TrieNode node = root;
         for(int i=0; i< word.length(); i++){
             char c = word.charAt(i);
-            TrieNode t;
-            if(children.containsKey(c)){
-                t = children.get(c);
-            } else {
-                t = new TrieNode(c);
-                children.put(c,t);
+            if(!node.containsKey(c)){
+                node.put(c, new TrieNode());
             }
-            t.count++;
-            children = t.children;
-            if(i == word.length()-1)
-                t.isLeaf = true;
+            node = node.get(c);
+            node.incrementCount(c);
         }
+        node.setEnd(true);
     }
 
     public boolean search(String word){
-        TrieNode t = searchNode(word);
-        if( t != null && t.isLeaf)
-            return true;
-        return false;
+        TrieNode node = searchNode(word);
+        return node != null && node.getEnd();
     }
 
     public TrieNode searchNode(String word){
-        Map<Character, TrieNode> children = root.children;
-        TrieNode t = null;
-        for(char c : word.toCharArray()){
-            if(children.containsKey(c)){
-                t = children.get(c);
-                children = t.children;
-            }else
+        if(word.length() == 0 || word == null)
+            return null;
+        TrieNode node = root;
+        for(int i=0; i< word.length(); i++) {
+            char c = word.charAt(i);
+            if(node.containsKey(c)){
+                node = node.get(c);
+            } else {
                 return null;
+            }
         }
-        return t;
+        return node;
     }
 
     public void delete(String word){
-        Map<Character, TrieNode> children = root.children;
+        TrieNode node = root;
+        if(!search(word)){
+            System.out.println("Does not exist in Trie");
+        }
 
-       if(!search(word)) {
-           System.out.println("Does not exist in Trie");
-           return;
-       }
-        for(char c : word.toCharArray()){
-            TrieNode t = null;
-            if(children.containsKey(c)){
-                t = children.get(c);
-                if(t.count == 1){
-                    children.remove(c);
+        for(int i=0; i<word.length(); i++){
+            char c = word.charAt(i);
+            if(node.containsKey(c)){
+                if(node.getCount(c) == 1) {
+                    node.remove(c);
                     return;
                 }
-                t.count--;
-                children = t.children;
-                t.isLeaf = false;
+                node.decrementCount(c);
+                node = node.get(c);
+                node.setEnd(false);
             }
+
         }
     }
 
     public boolean startsWith(String prefix){
-        if(searchNode(prefix) != null)
-            return true;
-        return false;
+        return searchNode(prefix) != null;
     }
 
     public static  void main(String args[]){
@@ -92,6 +83,7 @@ public class Trie {
             System.out.println("2. delete");
             System.out.println("3. search");
             System.out.println("4. startsWith");
+            System.out.println("5. Exit");
 
             int choice = sc.nextInt();
             switch(choice){
@@ -115,6 +107,8 @@ public class Trie {
                     System.out.println("Enter prefix to look for");
                     System.out.println(t.startsWith(sc.next()));
                     break;
+                case 5:
+                    System.exit(0);
                 default:
                     System.out.println("wrong entry");
                     break;
