@@ -52,7 +52,7 @@ public class QueueUsingArray<T> {
     }
 
     public boolean isFull(){
-        return queue_capacity-1 == current_size;
+        return queue_capacity == current_size;
     }
 
     public boolean isEmpty(){
@@ -61,11 +61,6 @@ public class QueueUsingArray<T> {
 
     public int size(){
         return current_size;
-    }
-
-    @Override
-    public String toString() {
-        return Arrays.toString(array);
     }
 
     public static void main(String args[]){
@@ -88,9 +83,6 @@ public class QueueUsingArray<T> {
             System.out.println(q.dequeue());
             System.out.println(q.dequeue());
             System.out.println(q.dequeue());
-            //System.out.println(q.dequeue());
-            //System.out.println(q.dequeue());
-            System.out.println(q);
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
