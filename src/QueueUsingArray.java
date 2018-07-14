@@ -1,60 +1,66 @@
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 
-public class QueueUsingArray {
+/*
+FIFO:First in First out
+Enqueue at end
+Dequeue from front
+ */
+public class QueueUsingArray<T> {
 
-    int[] array;
-    int size;
-    int head, tail;
-    int capacity;
+    int queue_capacity = 4;
+    int current_size = 0;
+    T[] array;
+    int front,back;
 
-    public QueueUsingArray(int n){
-        capacity = n;
-        array = new int[capacity];
-        head = -1;
-        tail = -1;
-
+    public QueueUsingArray(){
+        array = (T[]) new Object[queue_capacity];
+        front = 0;
+        back = 0;
     }
 
-    public void enqueue(int data){
+    public void enqueue(T t){
         if(isFull())
-            return;
-        tail = (tail+1)%capacity;
-        array[tail] = data;
-        if(head == -1)
-            head = tail;
-        size++;
+            resize();
+        
+        array[back] = t;
+        back = (back+1)%queue_capacity;
+        current_size++;
     }
 
-    public int dequeue(){
-        if(isEmpty()) {
-            System.out.println("Empty queue");
-            return -1;
-        }
-        int item = array[head];
-        size--;
-        head = (head+1)%capacity;
+    public T dequeue(){
+        if(isEmpty())
+            throw new NoSuchElementException("Underflow Exception");
 
-        if(size == 0){
-            head = -1;
-            tail = -1;
-        }
+        current_size--;
+        T item = array[front];
+        front = (front+1)%queue_capacity;
         return item;
     }
 
-    public int peek(){
-        return !isEmpty() ? array[head] : -1;
-    }
-
-    public boolean isEmpty(){
-        return size == 0;
+    public void resize(){
+        if(isFull()) {
+            queue_capacity = queue_capacity * 2;
+            T[] temp = (T[]) new Object[queue_capacity];
+            for(int i=0; i<current_size; i++){
+                temp[i] = array[(front+i)%array.length];
+            }
+            array = temp;
+            front = 0;
+            back = current_size;
+        }
     }
 
     public boolean isFull(){
-        return size == capacity;
+        return queue_capacity-1 == current_size;
+    }
+
+    public boolean isEmpty(){
+        return current_size == 0;
     }
 
     public int size(){
-        return size;
+        return current_size;
     }
 
     @Override
@@ -63,16 +69,30 @@ public class QueueUsingArray {
     }
 
     public static void main(String args[]){
-        QueueUsingArray q = new QueueUsingArray(5);
-        q.enqueue(1);
-        q.enqueue(2);
-        q.enqueue(3);
-        q.enqueue(4);
-        q.enqueue(5);
-        q.dequeue();
-        q.enqueue(6);
-        System.out.println(q.peek());
-        System.out.println(q);
+        QueueUsingArray<Integer> q = new QueueUsingArray<Integer>();
+        try {
+            System.out.println(q.isEmpty());
+            q.enqueue(1);
+            q.enqueue(2);
+            q.enqueue(3);
+            q.enqueue(4);
 
+            System.out.println(q.dequeue());
+            q.enqueue(5);
+            q.enqueue(6);
+            q.enqueue(7);
+
+            System.out.println(q.dequeue());
+            System.out.println(q.dequeue());
+            System.out.println(q.dequeue());
+            System.out.println(q.dequeue());
+            System.out.println(q.dequeue());
+            System.out.println(q.dequeue());
+            //System.out.println(q.dequeue());
+            //System.out.println(q.dequeue());
+            System.out.println(q);
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 }
