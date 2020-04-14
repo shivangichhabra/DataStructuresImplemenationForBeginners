@@ -1,11 +1,12 @@
 package Sorting;
 
+import java.util.*;
 /**
  * Created by Shivangi on 5/4/2017.
  */
 public class BucketSort {
 
-    public int maxValue(int[] a){
+    private int maxValue(int[] a){
         int max = 0;
         for(int i=0; i<a.length; i++){
             if(a[i] > max)
@@ -14,25 +15,36 @@ public class BucketSort {
         return max;
     }
 
-    public void bucketSort(int[] a, int maxValue){
-        int[] bucket = new int[maxValue+1];
+    private int hash(int i, int max, int numberOfBuckets) {
+        return (int) ((double) i / max * (numberOfBuckets - 1));
+    }
+
+    public List<Integer> bucketSort(int[] input, int max){
+        final int numberOfBuckets = (int) Math.sqrt(input.length);
 
         // 1) Create n empty buckets
-        for(int i=0; i<bucket.length; i++)
-            bucket[i] = 0;
+        List<List<Integer>> buckets = new ArrayList<>(numberOfBuckets);
+        for(int i = 0; i < numberOfBuckets; i++) {
+            buckets.add(new ArrayList<>());
+        }
 
         // 2) Put array elements in different buckets
-        for(int i=0; i<a.length; i++)
-            bucket[a[i]]++;
-
+        for (int i : input) {
+            buckets.get(hash(i, max, numberOfBuckets)).add(i);
+        }
 
         // 3) Sort individual buckets
-        // 4) Concatenate all buckets into a[]
-        int x = 0;
-        for(int i=0; i<bucket.length; i++){
-            for(int j=0; j<bucket[i]; j++)
-                a[x++] = i;
+        for(List bucket : buckets){
+            Collections.sort(bucket);
         }
+
+        // 4) Concatenate all buckets into input[]
+        List<Integer> sortedList = new LinkedList<>();
+        for(List<Integer> bucket : buckets){
+            sortedList.addAll(bucket);
+        }
+
+        return sortedList;
     }
 
     public static void main(String args[]){
@@ -40,10 +52,10 @@ public class BucketSort {
         int a[] = {10, 50, 30, 20, 70, 0, 80, 100 , 10};
 
         int max = bs.maxValue(a);
-        bs.bucketSort(a, max);
+        List<Integer> sortedList = bs.bucketSort(a, max);
 
-        for(int i=0; i<a.length; i++){
-            System.out.print(a[i] + " ");
+        for(int i : sortedList){
+            System.out.print(i + " ");
         }
 
     }

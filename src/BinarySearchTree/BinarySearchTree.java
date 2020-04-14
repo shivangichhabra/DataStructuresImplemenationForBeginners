@@ -100,8 +100,7 @@ public class BinarySearchTree {
 
 //                //Method 2
 //                node.setData(findLeftMax(node.getLeft()));
-//                node.setLeft(delete(node.getLeft(), node.getData()));
-            }
+             }
         }
         return node;
     }
@@ -136,7 +135,7 @@ public class BinarySearchTree {
     public int count(BSTNode node){
         if(node != null){
             int n = 1;
-            n +=  count(node.getLeft());
+            n += count(node.getLeft());
             n += count(node.getRight());
             return n;
         }
